@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import './App.css'
+import { ProductForm } from './ProductForm'
 
 enum StatusEnum {
   active = 'active',
@@ -76,6 +77,8 @@ function App() {
       </form>
 
       <p>{data}</p>
+
+      <ProductForm />
     </div>
   )
 }
