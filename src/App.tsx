@@ -3,10 +3,16 @@ import { useForm } from 'react-hook-form'
 
 import './App.css'
 
+enum StatusEnum {
+  active = 'active',
+  inactive = 'inactive'
+}
+
 type FormValues = {
   name: string
   email: string
   group: string
+  status: StatusEnum
   creditLimit: number
 }
 
@@ -49,6 +55,11 @@ function App() {
             Campo preenchimento obrigatório e com no máximo 8 caracteres
           </span>
         )}
+
+        <select {...register('status')}>
+          <option value="active">Ativo</option>
+          <option value="inactive">Inativo</option>
+        </select>
 
         <input
           type="number"
