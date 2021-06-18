@@ -56,10 +56,12 @@ function App() {
           </span>
         )}
 
-        <select {...register('status')}>
+        <select {...register('status', { required: true })}>
+          <option value="">Selecione uma opção</option>
           <option value="active">Ativo</option>
           <option value="inactive">Inativo</option>
         </select>
+        {errors.status && <span>Selecione uma opção</span>}
 
         <input
           type="number"
