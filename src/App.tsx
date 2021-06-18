@@ -11,7 +11,11 @@ type FormValues = {
 }
 
 function App() {
-  const { register, handleSubmit } = useForm<FormValues>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormValues>()
   const [data, setData] = React.useState('')
 
   const onSubmit = (formData: FormValues) => {
@@ -33,19 +37,29 @@ function App() {
           justifyContent: 'space-around'
         }}
       >
-        <input {...register('name', { required: true, maxLength: 8 })} />
+        <input {...register('name', { required: true })} />
+        {errors.name && <span>Campo preenchimento obrigatório</span>}
 
         <input {...register('email', { required: true })} />
+        {errors.email && <span>Campo preenchimento obrigatório</span>}
 
-        <input {...register('group', { required: true })} />
+        <input {...register('group', { required: true, maxLength: 8 })} />
+        {errors.group && (
+          <span>
+            Campo preenchimento obrigatório e com no máximo 8 caracteres
+          </span>
+        )}
 
         <input
           type="number"
           {...register('creditLimit', { required: true, valueAsNumber: true })}
           placeholder="limite de crédito"
         />
+        {errors.creditLimit && <span>Campo preenchimento obrigatório</span>}
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit" style={{ height: 40 }}>
+          Cadastrar
+        </button>
       </form>
 
       <p>{data}</p>
