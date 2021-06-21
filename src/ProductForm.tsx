@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form'
 import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
 import TextField from '@material-ui/core/TextField'
-import { Typography } from '@material-ui/core'
 
 export function ProductForm() {
   const {
@@ -26,8 +25,9 @@ export function ProductForm() {
             variant="outlined"
             label="Descrição"
             placeholder="Descrição"
+            error={errors.description}
+            helperText={!!errors.description && 'Campo obrigatório'}
           />
-          {errors.description && <Typography>Campo obrigatório</Typography>}
           <Button type="submit" variant="contained" color="secondary">
             Enviar
           </Button>
