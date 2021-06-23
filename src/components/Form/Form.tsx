@@ -12,7 +12,7 @@ interface FormProps {
 
 export const Form = ({ onSubmit, data, children, schema }: FormProps) => {
   const {
-    getValues,
+    // getValues,
     handleSubmit,
     register,
     formState: { errors }
@@ -20,6 +20,7 @@ export const Form = ({ onSubmit, data, children, schema }: FormProps) => {
     defaultValues: data,
     resolver: yupResolver(schema)
   })
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {Array.isArray(children)
@@ -29,7 +30,7 @@ export const Form = ({ onSubmit, data, children, schema }: FormProps) => {
                   ...{
                     ...child.props,
                     register,
-                    getValue: getValues,
+                    // getValue: getValues,
                     errors,
                     key: child.props.name
                   }
